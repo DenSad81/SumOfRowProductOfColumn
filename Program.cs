@@ -9,40 +9,42 @@ class Program
     static void Main(string[] args)
     {
         const int OffsetForShow = 1;
-        int[,] array = new int[3, 6];
-        int arrayRows = array.GetLength(0);
-        int arrayColumns = array.GetLength(1);
-        int minValueInArray = 0;
-        int maxValueInArray = 10;
+        int[,] digits = new int[3, 6];
+        int quantityRows = digits.GetLength(0);
+        int qyantityColumns = digits.GetLength(1);
+        int minValueInDigits = 0;
+        int maxValueInDigits = 10;
         int rowSumm = 0;
-        int rowForSumm = 1;
+        int numberRowForSumm = 1;
         int columnProduct = 1;
-        int columnForProduct = 0;
+        int numberColumnForProduct = 0;
         Random random = new Random();
 
-        for (int i = 0; i < arrayRows; i++)
+        for (int i = 0; i < quantityRows; i++)
         {
-            for (int j = 0; j < arrayColumns; j++)
-                array[i, j] = random.Next(minValueInArray, maxValueInArray);
+            for (int j = 0; j < qyantityColumns; j++)
+                digits[i, j] = random.Next(minValueInDigits, maxValueInDigits);
         }
 
-        for (int i = 0; i < arrayRows; i++)
+        for (int i = 0; i < quantityRows; i++)
         {
-            for (int j = 0; j < arrayColumns; j++)
-                Console.Write(array[i, j]);
+            for (int j = 0; j < qyantityColumns; j++)
+                Console.Write(digits[i, j]);
 
             Console.WriteLine();
         }
 
-        for (int j = 0; j < arrayColumns; j++)
-            rowSumm += array[rowForSumm, j];
+        for (int j = 0; j < qyantityColumns; j++)
+            rowSumm += digits[numberRowForSumm, j];
 
+        int rowForShow = numberRowForSumm + OffsetForShow;
         Console.WriteLine();
-        Console.WriteLine("Сумма чисел строки № " + (rowForSumm + OffsetForShow) + " = " + rowSumm);
+        Console.WriteLine("Сумма чисел строки № " + rowForShow + " = " + rowSumm);
 
-        for (int i = 0; i < arrayRows; i++)
-            columnProduct *= array[i, columnForProduct];
+        for (int i = 0; i < quantityRows; i++)
+            columnProduct *= digits[i, numberColumnForProduct];
 
-        Console.WriteLine("Произведение чисел колонки № " + (columnForProduct + OffsetForShow) + " = " + columnProduct);
+        int columnForShow = numberColumnForProduct + OffsetForShow;
+        Console.WriteLine("Произведение чисел колонки № " + columnForShow + " = " + columnProduct);
     }
 }
